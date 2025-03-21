@@ -1,0 +1,17 @@
+<div class="brocolimeter card mod-action pr-u-margin100">
+    <div class="card-content">
+        <span>
+            <span class="u-fontWeight700">Brocolimeter : </span>
+            <span>{{ brocoliCount() }} brocolis</span>
+        </span>
+        <div class="gauge palette-success mod-constrainWidth pr-u-marginTop100">
+            <div class="gauge-bar" [style.width]="gaugeWidth()"></div>
+        </div>
+    </div>
+</div>
+
+@for (brocoli of brocolis(); track brocoli.id) {
+    <div>
+        <bro-brocoli [brocoli]="brocoli" />
+    </div>
+}

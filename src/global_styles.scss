@@ -1,0 +1,58 @@
+@use '@lucca-front/scss/src/commons/config' with (
+	$palettesOtherProduct: ('pagga', 'poplee', 'cleemy', 'timmi'),
+	$deprecatedSpacings: true,
+);
+
+@use '@lucca-front/scss/src/commons/utils/media';
+
+@forward '@lucca-front/icons/src/main';
+@forward '@lucca-front/scss/src/main';
+@forward '@lucca-front/scss/src/components/box';
+@forward '@lucca-front/scss/src/components/breadcrumbs';
+@forward '@lucca-front/scss/src/components/button';
+@forward '@lucca-front/scss/src/components/callout';
+@forward '@lucca-front/scss/src/components/card';
+@forward '@lucca-front/scss/src/components/checkbox';
+@forward '@lucca-front/scss/src/components/checkboxField';
+@forward '@lucca-front/scss/src/components/chip';
+@forward '@lucca-front/scss/src/components/clear';
+@forward '@lucca-front/scss/src/components/code';
+@forward '@lucca-front/scss/src/components/container';
+@forward '@lucca-front/scss/src/components/dataTable';
+@forward '@lucca-front/scss/src/components/divider';
+@forward '@lucca-front/scss/src/components/emptyState';
+@forward '@lucca-front/scss/src/components/errorPage';
+@forward '@lucca-front/scss/src/components/field';
+@forward '@lucca-front/scss/src/components/fieldset';
+@forward '@lucca-front/scss/src/components/file';
+@forward '@lucca-front/scss/src/components/form';
+@forward '@lucca-front/scss/src/components/formLabel';
+@forward '@lucca-front/scss/src/components/gauge';
+@forward '@lucca-front/scss/src/components/grid';
+@forward '@lucca-front/scss/src/components/header';
+@forward '@lucca-front/scss/src/components/label';
+@forward '@lucca-front/scss/src/components/layout';
+@forward '@lucca-front/scss/src/components/link';
+@forward '@lucca-front/scss/src/components/loading';
+@forward '@lucca-front/scss/src/components/main';
+@forward '@lucca-front/scss/src/components/menu';
+@forward '@lucca-front/scss/src/components/navside';
+@forward '@lucca-front/scss/src/components/pageHeader';
+@forward '@lucca-front/scss/src/components/pagination';
+@forward '@lucca-front/scss/src/components/progress';
+@forward '@lucca-front/scss/src/components/radioButtons';
+@forward '@lucca-front/scss/src/components/statusBadge';
+@forward '@lucca-front/scss/src/components/switch';
+@forward '@lucca-front/scss/src/components/switchField';
+@forward '@lucca-front/scss/src/components/statusBadge';
+@forward '@lucca-front/scss/src/components/table';
+@forward '@lucca-front/scss/src/components/tableSortable';
+@forward '@lucca-front/scss/src/components/tag';
+@forward '@lucca-front/scss/src/components/textfields';
+@forward '@lucca-front/scss/src/components/timeline';
+@forward '@lucca-front/scss/src/components/title';
+@forward '@lucca-front/scss/src/components/titleSection';
+@forward '@lucca-front/scss/src/components/toast';
+
+@forward '@lucca-front/scss/src/commons/utils/media';
+@forward '@lucca-front/ng/src/main';
