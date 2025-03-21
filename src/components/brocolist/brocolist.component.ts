@@ -1,6 +1,7 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { BrocoliComponent } from "../brocoli/brocoli.component";
 import { Brocoli } from "../models";
+import { BrocoliStore } from "../../stores/brocoli.store";
 
 @Component({
   selector: 'bro-brocolist',
@@ -8,16 +9,13 @@ import { Brocoli } from "../models";
     BrocoliComponent
   ],
   templateUrl: './brocolist.component.html',
-  styleUrl: './brocolist.component.css'
+  styleUrl: './brocolist.component.css',
+  providers: [BrocoliStore]
 })
 export class BrocolistComponent {
-  public brocolis = signal<Brocoli[]>([{
-    "createdAt": "2025-03-21T10:46:13.430Z",
-    "name": "Diana Schultz",
-    "avatar": "https://croissy-fruits.fr/cdn/shop/files/Brocoli_CroissyFruits_Packshot-7093.jpg?v=1723742984&width=300",
-    "description": "sympathize",
-    "id": 1
-  }]);
+  readonly store = inject(BrocoliStore);
+  
+  public brocolis = this.store.brocolis;
 
   public brocoliCount = computed(() => this.brocolis().length);
   public progress = computed(() => this.brocoliCount() / 100);
