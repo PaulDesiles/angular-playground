@@ -14,10 +14,5 @@ import { BrocoliStore } from "../../stores/brocoli.store";
 })
 export class BrocolistComponent {
   readonly store = inject(BrocoliStore);
-  
-  public brocolis = this.store.brocolis;
-
-  public brocoliCount = computed(() => this.brocolis().length);
-  public progress = computed(() => this.brocoliCount() / 100);
-  public gaugeWidth = computed(() => `${this.progress() * 100}%`);
+  public gaugeWidth = computed(() => `${this.store.brocoliProgress() * 100}%`);
 }
