@@ -1,17 +1,22 @@
-<div class="brocolimeter card mod-action pr-u-margin100">
-    <div class="card-content">
-        <span>
-            <span class="u-fontWeight700">Brocolimeter : </span>
-            <span>{{ store.brocoliCount() }} brocolis</span>
-        </span>
-        <div class="gauge palette-success mod-constrainWidth pr-u-marginTop100">
-            <div class="gauge-bar" [style.width]="gaugeWidth()"></div>
+@if (store.isInitActionLoading()) {
+    <div class="loading mod-block mod-L  "></div>
+}
+@else {
+    <div class="brocolimeter card mod-action pr-u-margin100">
+        <div class="card-content">
+            <span>
+                <span class="u-fontWeight700">Brocolimeter : </span>
+                <span>{{ store.brocoliCount() }} brocolis</span>
+            </span>
+            <div class="gauge palette-success mod-constrainWidth pr-u-marginTop100">
+                <div class="gauge-bar" [style.width]="gaugeWidth()"></div>
+            </div>
         </div>
     </div>
-</div>
 
-@for (brocoli of store.brocolis(); track brocoli.id) {
-    <div>
-        <bro-brocoli [brocoli]="brocoli" />
-    </div>
+    @for (brocoli of store.brocolis(); track brocoli.id) {
+        <div>
+            <bro-brocoli [brocoli]="brocoli" />
+        </div>
+    }
 }

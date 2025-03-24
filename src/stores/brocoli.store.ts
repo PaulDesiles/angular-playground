@@ -2,6 +2,8 @@
 import { Brocoli } from "../components/models";
 import { BrocoliApiService } from "../api/brocoli-api.service";
 import { computed, inject } from "@angular/core";
+import { withLoadingAction } from "@lucca/cdk/signal-store";
+import { onLoadingStateChange } from "@lucca/cdk/utils";
 
 export const BrocoliStore = signalStore(
   withState({
@@ -13,9 +15,12 @@ export const BrocoliStore = signalStore(
   withComputed(({ brocoliCount }) => ({
     brocoliProgress: computed(() => brocoliCount() / 100),
   })),
+  withLoadingAction('init'),
   withHooks({
-    onInit(store, api = inject(BrocoliApiService) ) {
-      api.list$().subscribe(list => patchState(store, { brocolis: list }));
+    onInit(store, api = inject(BrocoliApiService)) {
+      api.list$()
+        .pipe(onLoadingStateChange(store.setInitActionLoading))
+        .subscribe(list => patchState(store, { brocolis: list }));
     },
   })
 );
