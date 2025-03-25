@@ -12,8 +12,9 @@ import { BrocoliApiService } from "../api/brocoli-api.service";
 import { computed, inject } from "@angular/core";
 import { withLoadingAction, withUiStateAction } from "@lucca/cdk/signal-store";
 import { onLoadingStateChange, onUiStateChange } from "@lucca/cdk/utils";
-import { delay, of } from "rxjs";
+import { delay, of, pipe, tap } from "rxjs";
 import { SoupSize } from "./soup.store";
+import { rxMethod } from "@ngrx/signals/rxjs-interop";
 
 export function withBrocoliStore() {
   return signalStoreFeature(
@@ -30,17 +31,16 @@ export function withBrocoliStore() {
     withLoadingAction('init'),
     withUiStateAction('nothing'),
     withMethods(( store ) => ({
-      doNothingButTakeYourTime: () => {
-        of(undefined)
-          .pipe(
-            delay(2000),
-            onUiStateChange(store.setNothingActionUiState)
-          )
-          .subscribe();
-      }
+      doNothingButTakeYourTime: rxMethod<undefined>(
+        pipe(
+          delay(2000),
+          onUiStateChange(store.setNothingActionUiState)
+        )
+      ),
     })),
     withHooks({
       onInit(store, api = inject(BrocoliApiService)) {
+
         api.list$()
           .pipe(onLoadingStateChange(store.setInitActionLoading))
           .subscribe(list => patchState(store, { brocolis: list }));
