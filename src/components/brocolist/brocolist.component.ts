@@ -1,9 +1,8 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { BrocoliComponent } from "../brocoli/brocoli.component";
-import { Brocoli } from "../models";
-import { BrocoliStore } from "../../stores/brocoli.store";
 import { ButtonComponent } from "@lucca-front/ng/button";
 import { LuUiStateDirective } from "@lucca/cdk/utils";
+import { SoupStore } from "../../stores/soup.store";
 
 @Component({
   selector: 'bro-brocolist',
@@ -14,9 +13,9 @@ import { LuUiStateDirective } from "@lucca/cdk/utils";
   ],
   templateUrl: './brocolist.component.html',
   styleUrl: './brocolist.component.css',
-  providers: [BrocoliStore]
+  providers: [SoupStore]
 })
 export class BrocolistComponent {
-  readonly store = inject(BrocoliStore);
+  readonly store = inject(SoupStore);
   public gaugeWidth = computed(() => `${this.store.brocoliProgress() * 100}%`);
 }
