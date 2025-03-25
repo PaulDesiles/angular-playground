@@ -14,6 +14,14 @@
         </div>
     </div>
 
+    <button
+            luButton
+            (click)="store.doNothingButTakeYourTime()"
+            [luUiState]="store.nothingActionUiState()"
+    >
+        Do Nothing
+    </button>
+
     @for (brocoli of store.brocolis(); track brocoli.id) {
         <div>
             <bro-brocoli [brocoli]="brocoli" />
