@@ -1,6 +1,7 @@
 ﻿import {
   patchState,
   signalStoreFeature,
+  type,
   withComputed,
   withHooks,
   withMethods,
@@ -12,17 +13,19 @@ import { computed, inject } from "@angular/core";
 import { withLoadingAction, withUiStateAction } from "@lucca/cdk/signal-store";
 import { onLoadingStateChange, onUiStateChange } from "@lucca/cdk/utils";
 import { delay, of } from "rxjs";
+import { SoupSize } from "./soup.store";
 
 export function withBrocoliStore() {
   return signalStoreFeature(
+    { state: type<SoupSize>() },
     withState({
       brocolis: [] as Brocoli[],
     }),
     withComputed(({ brocolis }) => ({
       brocoliCount: computed(() => brocolis().length),
     })),
-    withComputed(({ brocoliCount }) => ({
-      brocoliProgress: computed(() => brocoliCount() / 100),
+    withComputed(({ brocoliCount, nbPers }) => ({
+      brocoliProgress: computed(() => (brocoliCount() / nbPers()) / 100),
     })),
     withLoadingAction('init'),
     withUiStateAction('nothing'),
